@@ -1,0 +1,17 @@
+@Orders_HostAddress = http://localhost:5180
+
+GET {{Orders_HostAddress}}/api/v1/orders
+Accept: application/json
+
+###
+
+POST {{Orders_HostAddress}}/api/v1/orders
+Content-Type: application/json
+X-Correlation-ID: {{$guid}}
+
+{
+  "customerName": "Ada Lovelace",
+  "amount": 42.50
+}
+
+###

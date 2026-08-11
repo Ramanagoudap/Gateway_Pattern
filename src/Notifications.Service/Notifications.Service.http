@@ -1,0 +1,18 @@
+@Notifications_HostAddress = http://localhost:5181
+
+GET {{Notifications_HostAddress}}/api/v1/notifications
+Accept: application/json
+
+###
+
+POST {{Notifications_HostAddress}}/api/v1/notifications
+Content-Type: application/json
+X-Correlation-ID: {{$guid}}
+
+{
+  "orderId": "11111111-1111-1111-1111-111111111111",
+  "message": "Order created",
+  "recipient": "customer@example.com"
+}
+
+###

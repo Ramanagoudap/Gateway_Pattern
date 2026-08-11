@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "All Services",
+    "Projects": [
+      {
+        "Path": "src\\Notifications.Service\\Notifications.Service.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\Orders.Service\\Orders.Service.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\ApiGateway\\ApiGateway.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

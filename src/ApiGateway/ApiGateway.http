@@ -1,0 +1,46 @@
+# Local ports:
+#   ApiGateway:     http://localhost:5172
+#   Orders:         http://localhost:5180
+#   Notifications:  http://localhost:5181
+#
+# Prefer VS Code/Cursor compound launch "All Services", or start all three projects first.
+
+@ApiGateway_HostAddress = http://localhost:5172
+
+### Create order via gateway (Orders also notifies Notifications)
+POST {{ApiGateway_HostAddress}}/api/v1/orders
+Content-Type: application/json
+Idempotency-Key: {{$guid}}
+X-Correlation-ID: {{$guid}}
+
+{
+  "customerName": "Ada Lovelace",
+  "amount": 42.50
+}
+
+###
+
+### List orders via gateway
+GET {{ApiGateway_HostAddress}}/api/v1/orders
+Accept: application/json
+
+###
+
+### List notifications via gateway (includes side-effect from order create)
+GET {{ApiGateway_HostAddress}}/api/v1/notifications
+Accept: application/json
+
+###
+
+### Create notification directly via gateway
+POST {{ApiGateway_HostAddress}}/api/v1/notifications
+Content-Type: application/json
+X-Correlation-ID: {{$guid}}
+
+{
+  "orderId": "11111111-1111-1111-1111-111111111111",
+  "message": "Manual reminder",
+  "recipient": "ops@example.com"
+}
+
+###

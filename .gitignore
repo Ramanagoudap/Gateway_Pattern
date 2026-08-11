@@ -1,0 +1,15 @@
+## Build
+**/bin/
+**/obj/
+**/artifacts/
+*.user
+*.DotSettings.user
+
+## IDE / VS
+.vs/
+.idea/
+
+## Logs / local
+*.log
+launchSettings.json.user
+Gateway_Pattern.slnLaunch.user
