@@ -86,6 +86,8 @@ flowchart LR
 - src/Notifications.Service/appsettings.json
 - src/**/*.cs (controllers and service implementations) — inspect each project for controllers that implement exposed endpoints
 
+- src/gatewayUI — an Angular frontend that calls the ApiGateway. The dev server proxies requests that start with /api to the gateway (see src/gatewayUI/proxy.conf.json). Run it with `npm install` and `npm start` from that folder.
+
 ## How to view this document
 - Open ARCHITECTURE.md in the repository root. GitHub and many editors (VS Code) can render Mermaid diagrams if the extension/support is available.
 

@@ -11,10 +11,10 @@ import { Order } from '../models/order.model';
   <h2>Create Order</h2>
   <form (ngSubmit)="submit()">
     <div>
-      <label>Item: <input [(ngModel)]="model.item" name="item" required></label>
+      <label>Customer Name: <input [(ngModel)]="customerName" name="customerName" required></label>
     </div>
     <div>
-      <label>Quantity: <input type="number" [(ngModel)]="model.quantity" name="quantity" required></label>
+      <label>Amount: <input type="number" [(ngModel)]="amount" name="amount" required></label>
     </div>
     <button type="submit">Create</button>
   </form>
@@ -24,12 +24,14 @@ import { Order } from '../models/order.model';
   providers: [OrderService]
 })
 export class CreateOrderComponent {
-  model: Order = { item: '', quantity: 1 };
+  customerName = '';
+  amount = 1;
   result: any = null;
 
   constructor(private svc: OrderService) {}
 
   submit() {
-    this.svc.create(this.model).subscribe({ next: r => this.result = r, error: e => this.result = { error: e?.message } });
+    const payload = { CustomerName: this.customerName, Amount: this.amount };
+    this.svc.create(payload).subscribe({ next: r => this.result = r, error: e => this.result = { error: e?.message } });
   }
 }

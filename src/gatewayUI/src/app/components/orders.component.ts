@@ -10,7 +10,7 @@ import { Order } from '../models/order.model';
   <h2>Orders</h2>
   <button (click)="load()">Reload</button>
   <ul>
-    <li *ngFor="let o of orders">{{ o.item }} (x{{ o.quantity }}) - {{ o.createdAt || '' }}</li>
+    <li *ngFor="let o of orders">{{ o.customerName }} - {{ o.amount }} - Notified: {{ o.notificationSent }}</li>
   </ul>
   `,
   imports: [CommonModule],

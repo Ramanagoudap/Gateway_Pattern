@@ -11,6 +11,18 @@ public static class ServiceCollectionExtensions
 {
 	public static IServiceCollection AddGatewayServices(this IServiceCollection services, IConfiguration configuration)
 	{
+		// CORS: allow requests from the frontend dev server
+		services.AddCors(options =>
+		{
+			options.AddPolicy("AllowFrontend", policy =>
+			{
+				policy.WithOrigins("http://localhost:4200")
+					.AllowAnyHeader()
+					.AllowAnyMethod()
+					.AllowCredentials();
+			});
+		});
+
 		services.Configure<GatewayOptions>(configuration.GetSection(GatewayOptions.SectionName));
 
 		var redisConnectionString = configuration.GetConnectionString("Redis") ?? "localhost:6379";

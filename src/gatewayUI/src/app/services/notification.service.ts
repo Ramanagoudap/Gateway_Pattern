@@ -5,7 +5,8 @@ import { NotificationPayload } from '../models/notification.model';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
-  private base = '/api/v1/notifications';
+  // Use ApiGateway absolute URL to avoid dev-server proxy configuration issues.
+  private base = 'http://localhost:5172/api/v1/notifications';
 
   constructor(private http: HttpClient) {}
 

@@ -18,5 +18,6 @@ if (app.Environment.IsDevelopment())
 app.UseCorrelationId();
 app.UseIdempotencyPolicy();
 app.UseResponseCachePolicy();
+app.UseCors("AllowFrontend");
 app.MapReverseProxy();
 app.Run();
