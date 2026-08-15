@@ -1,0 +1,33 @@
+{
+  "$schema": "https://angular.io/config/angular.json",
+  "version": 1,
+  "projects": {
+    "ui-frontend": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ui-frontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [],
+            "tsConfig": "tsconfig.app.json",
+            "assets": ["src/favicon.ico"],
+            "styles": ["src/styles.css"]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ui-frontend:build"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ui-frontend"
+}
